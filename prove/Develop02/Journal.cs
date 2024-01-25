@@ -19,7 +19,7 @@ class Journal
     }
     public void SaveToFile(string filename)
     {
-        using (StreamWriter outputFile = new StreamWriter(filename))
+        using (StreamWriter outputFile = new StreamWriter(filename, append: true))
         {
             foreach (var _entry in _entries)
             {
@@ -33,6 +33,10 @@ class Journal
 
         foreach (string line in lines)
         {
+            Console.WriteLine(line);
+        }
+        /*foreach (string line in lines)
+        {
             string[] parts = line.Split("|");
             Entry _fetchEntry = new Entry();
             _fetchEntry._date = parts[0];
@@ -41,6 +45,6 @@ class Journal
             AddEntry(_fetchEntry);
 
         }
-        DisplayAll();
+        DisplayAll();*/
     }
 }
