@@ -8,20 +8,23 @@ class Program
         int _chapter;
         int _verse;
         int _endVerse;
+        int idxToHide;
 
         string _text = LoadFromFile();
         string[] content = _text.Split("|");
-        int _commasCounter = content.Length;
+        int _pipeCounter = content.Length;
 
-        if (_commasCounter == 4)
+
+        Reference reference;
+        Scripture scripture;
+
+        if (_pipeCounter == 4)
         {
             _book = content[0];
             _chapter = int.Parse(content[1]);
             _verse = int.Parse(content[2]);
-            Reference reference = new Reference(_book, _chapter, _verse);
-            Scripture scripture = new Scripture(reference, content[3]);
-            /*scripture.SetText(content[3]);*/
-            Console.WriteLine(scripture.GetDisplayText());
+            reference = new Reference(_book, _chapter, _verse);
+            scripture = new Scripture(reference, content[3]);
         }
         else
         {
@@ -29,15 +32,40 @@ class Program
             _chapter = int.Parse(content[1]);
             _verse = int.Parse(content[2]);
             _endVerse = int.Parse(content[3]);
-            Reference reference = new Reference(_book, _chapter, _verse, _endVerse);
-            Scripture scripture = new Scripture(reference, content[4]);
-            /*scripture.SetText(content[4]);*/
-            Console.WriteLine(scripture.GetDisplayText());
+            reference = new Reference(_book, _chapter, _verse, _endVerse);
+            scripture = new Scripture(reference, content[4]);
         }
 
+        Console.WriteLine(scripture.GetDisplayText());
+        Console.WriteLine("Please enter to continue or type 'quit' to finish");
+        string _quit = Console.ReadLine();
+
+        if (!string.Equals(_quit, "quit"))
+        {
+            while (!scripture.IscompletelyHidden())
+            {
+                idxToHide = GenerateRandomNumber(scripture.NumberWords());
+                scripture.HideRandomWords(idxToHide);
+
+                if (scripture.IsWordHidden(idxToHide))
+                {
+                    Console.Clear();
+                    Console.WriteLine(scripture.GetDisplayText());
+                }
+                Console.WriteLine("Please enter to continue or type 'quit' to finish");
+                _quit = Console.ReadLine();
+                if (string.Equals(_quit, "quit"))
+                {
+                    break;
+                }
+                Console.Clear();
+
+            }
+            Environment.Exit(0);
+        }
+        Environment.Exit(0);
 
     }
-
     public static string LoadFromFile()
     {
         string[] lines = System.IO.File.ReadAllLines("Scriptures.txt");
@@ -46,8 +74,11 @@ class Program
         return lines[_rnd.Next(0, lines.Length)];
     }
 
-    public static int CommasCounter(string line)
+    public static int GenerateRandomNumber(int seed)
     {
-        return line.Split(",").Length - 1;
+        Random _rnd = new Random();
+        int _randomNumber = _rnd.Next(0, seed);
+        return _randomNumber;
     }
+
 }
