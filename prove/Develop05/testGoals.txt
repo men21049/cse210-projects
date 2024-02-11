@@ -1,0 +1,4 @@
+1700
+Simple Goal|test 1|test 1 desc|50|True
+Eternal Goal|test 2|test 2 desc|100
+CheckList Goal|test 3|test 3 desc|500|3|150|3

@@ -2,7 +2,7 @@ namespace Develop05
 {
     class EternalGoal : Goal
     {
-        public EternalGoal(string name, string description, string points) : base(name, description, points)
+        public EternalGoal(string name, string description, int points) : base(name, description, points)
         { }
         public override void RecordEvent()
         {
@@ -13,10 +13,13 @@ namespace Develop05
         {
             return false;
         }
-
+        public override int GetBonus()
+        {
+            return 0;
+        }
         public override string GetStringRepresentation()
         {
-            return base.GetStringRepresentation();
+            return $"Eternal Goal|{GetShortName}|{GetDescription}|{GetPoints}";
         }
     }
 }

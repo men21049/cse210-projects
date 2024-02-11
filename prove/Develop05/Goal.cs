@@ -1,32 +1,58 @@
 namespace Develop05
 {
-    class Goal
+    abstract class Goal
     {
         private string _shortname;
         private string _description;
-        private string _points;
+        private int _points;
 
-        public Goal(string shortname, string description, string points)
+        public Goal(string shortname, string description, int points)
         {
             _shortname = shortname;
             _description = description;
             _points = points;
         }
 
-        public virtual void RecordEvent() { }
-        public virtual bool IsComplete()
+        public string GetShortName
         {
-            return false;
-        }
-        public virtual string GetDetailsString()
-        {
-            return "hola";
-        }
-        public virtual string GetStringRepresentation()
-        {
-            return "hola2";
+            get
+            {
+                return this._shortname;
+            }
+
         }
 
+        public int GetPoints
+        {
+            get
+            {
+                return this._points;
+            }
+        }
+
+        public string GetDescription
+        {
+            get
+            {
+                return this._description;
+            }
+        }
+        public abstract void RecordEvent();
+        public abstract bool IsComplete();
+        public virtual string GetDetailsString()
+        {
+            if (IsComplete())
+            {
+                return $"[x] {GetShortName} : {GetDescription}";
+            }
+            else
+            {
+                return $"[] {GetShortName} : {GetDescription}";
+            }
+        }
+
+        public abstract int GetBonus();
+        public abstract string GetStringRepresentation();
 
     }
 }
