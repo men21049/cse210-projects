@@ -1,9 +1,11 @@
 using System;
+using FinalProject;
 
 class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello FinalProject World!");
+        InventoryManager inventoryManager = new InventoryManager();
+        inventoryManager.Start();
     }
 }
