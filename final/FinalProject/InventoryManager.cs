@@ -1,0 +1,7 @@
+namespace FinalProject
+{
+    class InventoryManager
+    {
+
+    }
+}
