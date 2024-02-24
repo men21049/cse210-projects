@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace FinalProject
 {
     class Magazine : Media
@@ -11,5 +13,14 @@ namespace FinalProject
             _editorial = editorial;
         }
 
+        public int GetNumPages()
+        {
+            return _numPages;
+        }
+
+        public string GetEditorial()
+        {
+            return _editorial;
+        }
     }
 }

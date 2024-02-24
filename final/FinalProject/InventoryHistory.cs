@@ -9,5 +9,12 @@ namespace FinalProject
         {
 
         }
+
+        public int DaysOut(DateTime dt)
+        {
+            DateTime now = DateTime.Now;
+            TimeSpan diffResult = now.Subtract(dt);
+            return diffResult.Days;
+        }
     }
 }

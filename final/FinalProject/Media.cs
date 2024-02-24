@@ -14,5 +14,27 @@ namespace FinalProject
             _genre = genre;
             _upc = upc;
         }
+
+        public string GetTitle()
+        {
+            return _title;
+        }
+        public string GetGenre()
+        {
+            return _genre;
+        }
+        public string GetMediaType()
+        {
+            return _mediaType;
+        }
+
+        public string GetUPC()
+        {
+            return _upc;
+        }
+        public bool CompareGenre(string genre)
+        {
+            return _genre == genre;
+        }
     }
 }

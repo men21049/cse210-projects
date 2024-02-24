@@ -12,6 +12,20 @@ namespace FinalProject
             _editorial = editorial;
             _coverType = coverType;
         }
+        public int GetNumPg()
+        {
+            return _numPages;
+        }
+
+        public string GetEditorial()
+        {
+            return _editorial;
+        }
+        public string GetCoverType()
+        {
+            return _coverType;
+        }
+
     }
 
 }

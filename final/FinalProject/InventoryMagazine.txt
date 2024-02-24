@@ -1,0 +1,2 @@
+Magazine|Spiderman|comic|Marvel|45|0000000000|3RL5||
+Magazine|Superman|comic|DC|65|0000000000|3RL3||
